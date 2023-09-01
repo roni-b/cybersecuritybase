@@ -1,0 +1,24 @@
+<html>
+<head>
+    <title>Blog List</title>
+</head>
+<body>
+    <h1>Blog List</h1>
+    <ul>
+        {% for blog in bloglist %}
+            <li><a href="{% url 'blog' blog.id %}">{{ blog.title }}</a></li>
+        {% endfor %}
+    </ul>
+    <h2>Add new blog</h2>
+    <form action="/blogs/" method="post" id="blogform">
+        {% csrf_token %}
+        <label for="title">Enter blog title: </label>
+        <input id="title" type="text" name="title">
+        <br>
+        <label for="content">Enter blog content: </label>
+        <textarea id="content" name="content" form="blogform"></textarea>
+        <br>
+        <input type="submit" value="OK">
+    </form>
+</body>
+</html>
