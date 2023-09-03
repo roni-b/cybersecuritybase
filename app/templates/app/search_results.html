@@ -8,7 +8,11 @@
     <p>You searched for: {{ query }}</p>
 
     <ul>
-
+      {% for blog in results %}
+      <li><a href="{% url 'blog' blog.id %}">{{ blog.title }}</a></li>
+      {% empty %}
+      <li>No results found.</li>
+      {% endfor %}
     </ul>
 </body>
 </html>
