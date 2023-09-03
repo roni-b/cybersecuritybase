@@ -4,6 +4,11 @@
 </head>
 <body>
     <h1>Blog List</h1>
+    <form action="/search/" method="get">
+        <label for="search">Search for a Blog: </label>
+        <input id="search" type="text" name="q">
+        <input type="submit" value="Search">
+    </form>
     <ul>
         {% for blog in bloglist %}
             <li><a href="{% url 'blog' blog.id %}">{{ blog.title }}</a></li>
