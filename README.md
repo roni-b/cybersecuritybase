@@ -31,6 +31,8 @@ FLAW 3
 
 A7:2017-Cross-Site Scripting (XSS)
 
+https://github.com/roni-b/cybersecuritybase/blob/5eea292b5338cdb7955feffaabe8302090742ac5/app/views.py#L13
+
 By default Django escapes data but it can be turned off. Now if the user creates blog with title <script>alert('XSS');</script> that javascript code is executed for everyone who is visiting the /blogs page. The fix is to not use | safe option which marks data safe. It is worth of keeping mind that first rule of web application security is never to trust user input.
 
 FLAW 4
