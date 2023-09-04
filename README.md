@@ -23,7 +23,7 @@ FLAW 2:
 
 A1:2017-Injection
 
-[https://github.com/roni-b/cybersecuritybase/blob/main/app/views.py#L40](https://github.com/roni-b/cybersecuritybase/blob/5eea292b5338cdb7955feffaabe8302090742ac5/app/views.py#L47)
+https://github.com/roni-b/cybersecuritybase/blob/5eea292b5338cdb7955feffaabe8302090742ac5/app/views.py#L46
 
 The app currently employs an unsafe SQL query format for its search function, wherein user-provided parameters are directly integrated into the query. User could for example use search term ' OR 1=1 -- to show all results. To fix this vulnerability, it is necessary to use methods which uses query parameterization. These techniques ensure that user input is properly sanitized and separated from the query.
 
