@@ -2,7 +2,7 @@ LINK: https://github.com/roni-b/cybersecuritybase
 
 Installation instructions:
 
-1. Run database migrations with command python manage.py migrate
+1. Run database migrations with command *python manage.py migrate
 
 2. Create superuser with command python manage.py createsuperuser
 
