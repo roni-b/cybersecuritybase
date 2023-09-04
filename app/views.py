@@ -24,13 +24,6 @@ def blogs(request):
             print(form.errors)
             form = BlogForm()
 
-    # if request.method == 'POST':
-    #     title = request.POST.get('title', '')
-    #     content = request.POST.get('content', '')
-    #     user = get_user(request)
-    #     new_blog = Blog(title=title, content=content, author=user)
-    #     new_blog.save()
-
     bloglist = Blog.objects.all()
     return render(request, 'app/blogs.html', {'bloglist': bloglist})
 
