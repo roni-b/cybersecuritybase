@@ -12,24 +12,24 @@ def home(request):
 #@login_required
 @csrf_exempt
 def blogs(request):
-    # if request.method == 'POST':
-    #     form = BlogForm(request.POST)
-    #     if form.is_valid():
-    #         new_blog = form.save(commit=False)
-    #         user = get_user(request)
-    #         new_blog.author = user
-    #         new_blog.save()
-    #         return redirect('blogs')
-    #     else:
-    #         print(form.errors)
-    #         form = BlogForm()
-
     if request.method == 'POST':
-        title = request.POST.get('title', '')
-        content = request.POST.get('content', '')
-        user = get_user(request)
-        new_blog = Blog(title=title, content=content, author=user)
-        new_blog.save()
+        form = BlogForm(request.POST)
+        if form.is_valid():
+            new_blog = form.save(commit=False)
+            user = get_user(request)
+            new_blog.author = user
+            new_blog.save()
+            return redirect('blogs')
+        else:
+            print(form.errors)
+            form = BlogForm()
+
+    # if request.method == 'POST':
+    #     title = request.POST.get('title', '')
+    #     content = request.POST.get('content', '')
+    #     user = get_user(request)
+    #     new_blog = Blog(title=title, content=content, author=user)
+    #     new_blog.save()
 
     bloglist = Blog.objects.all()
     return render(request, 'app/blogs.html', {'bloglist': bloglist})
