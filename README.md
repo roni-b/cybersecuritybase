@@ -12,7 +12,7 @@ You will see simple blog app where you can make blogs. The blogs should be only 
 
 FLAW 1:
 
-A01:2021-Broken Access Control 
+A5:2017-Broken Access Control
 
 https://github.com/roni-b/cybersecuritybase/blob/main/app/views.py#L10C16-L10C16
 and https://github.com/roni-b/cybersecuritybase/blob/main/app/views.py#L28
@@ -21,12 +21,32 @@ The short description states that the blogs should only be visible to logged-in 
 
 FLAW 2:
 
-A03:2021-Injection
+A1:2017-Injection
 
 https://github.com/roni-b/cybersecuritybase/blob/main/app/views.py#L40
 
-The app currently employs an unsafe SQL query format for its search function, wherein user-provided parameters are directly integrated into the query. User could for example use search term ' OR 1=1 -- to see all blogs. To fix this vulnerability, it is necessary to use methods which uses query parameterization. These techniques ensure that user input is properly sanitized and separated from the query.
+The app currently employs an unsafe SQL query format for its search function, wherein user-provided parameters are directly integrated into the query. User could for example use search term ' OR 1=1 -- to show all results. To fix this vulnerability, it is necessary to use methods which uses query parameterization. These techniques ensure that user input is properly sanitized and separated from the query.
 
-' OR 1=1 --
+FLAW 3
+
+A7:2017-Cross-Site Scripting (XSS)
+
+By default Django escapes data but it can be turned off. Now if the user creates blog with title <script>alert('XSS');</script> that javascript code is executed for everyone who is visiting the /blogs page. The fix is to not use | safe option which marks data safe. It is worth of keeping mind that first rule of web application security is never to trust user input.
+
+FLAW 4
+
+Cross-Site Request Forgery (CSRF)
+
+In the /blogs page there is a form for submitting a new blog. However the view for that page has @csrf_exempt decorator which skips the CSRF validation. The fix is to remove @csrf_exempt decorator.
+
+FLAW 5
+
+A6:2017-Security Misconfiguration
+
+The most commonly seen issue is security misconfiguration and the blog app has one. In the settings.py file the DEBUG option is set to True. If we asssume that the app is in the production environment and DEBUG is set to True, it exposes sensitive information about the app and its internal workings to potential attacker such as file paths or stack traces. The fix is to set DEBUG to False. 
+
+
+
+
 
 

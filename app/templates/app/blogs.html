@@ -11,7 +11,7 @@
     </form>
     <ul>
         {% for blog in bloglist %}
-            <li><a href="{% url 'blog' blog.id %}">{{ blog.title }}</a></li>
+            <li><a href="{% url 'blog' blog.id %}">{{ blog.title | safe }}</a></li>
         {% endfor %}
     </ul>
     <h2>Add new blog</h2>
