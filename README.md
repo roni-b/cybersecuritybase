@@ -14,8 +14,7 @@ FLAW 1:
 
 A5:2017-Broken Access Control
 
-https://github.com/roni-b/cybersecuritybase/blob/main/app/views.py#L10C16-L10C16
-and https://github.com/roni-b/cybersecuritybase/blob/main/app/views.py#L28
+https://github.com/roni-b/cybersecuritybase/blob/5eea292b5338cdb7955feffaabe8302090742ac5/app/views.py#L12
 
 The short description states that the blogs should only be visible to logged-in users. However, currently, there is no restriction for non-logged-in users to access the /blogs page, which lists all the blogs, or specific blog sites, for example, /blog/1. The fix for this problem is actually very simple with Django as @login_required decorator before the view function ensures that only authenticated user can access certain views.
 
