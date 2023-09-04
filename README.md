@@ -38,11 +38,15 @@ FLAW 4
 
 Cross-Site Request Forgery (CSRF)
 
+https://github.com/roni-b/cybersecuritybase/blob/5eea292b5338cdb7955feffaabe8302090742ac5/app/views.py#L13
+
 In the /blogs page there is a form for submitting a new blog. However the view for that page has @csrf_exempt decorator which skips the CSRF validation. The fix is to remove @csrf_exempt decorator.
 
 FLAW 5
 
 A6:2017-Security Misconfiguration
+
+https://github.com/roni-b/cybersecuritybase/blob/652bddd5003c60c110b565813db218c63478d1f7/project/settings.py#L26
 
 The most commonly seen issue is security misconfiguration and the blog app has one. In the settings.py file the DEBUG option is set to True. If we asssume that the app is in the production environment and DEBUG is set to True, it exposes sensitive information about the app and its internal workings to potential attacker such as file paths or stack traces. The fix is to set DEBUG to False. 
 
